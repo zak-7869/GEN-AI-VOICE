@@ -4,8 +4,12 @@ from gtts import gTTS
 import os
 import io
 
+from dotenv import load_dotenv
+load_dotenv()
 # Initialize Groq Client
-client = Groq(api_key="write key")
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
 
 def transcribe_audio(audio_bytes):
     """Convert audio to text using Groq Whisper."""
